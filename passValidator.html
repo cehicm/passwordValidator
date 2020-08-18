@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<body>
+
+    <input type ="password" id= "passwordInput">
+    <button onclick="submitPassword()"> Submit </button>
+
+    <p id= "passwordResult"> </p>
+    
+    <script>
+function submitPassword(){ // add a param to be able to connect with letterNumber?
+    let passwordInput = document.getElementById("passwordInput");
+    let passwordResult = document.getElementById("passwordResult");
+    let letterNumber =  /(?=^.{5}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+    
+    // /^[0-9a-zA-Z]+$/; // make sure it's only letters and numbers
+
+
+
+    if (passwordInput.value == "" && passwordInput.value.length < 5 && !letterNumber )  // for?
+     { 
+        passwordResult.innerText = "bad pass";
+        
+    }  else {
+        passwordResult.innerText = "good";
+    }
+}
+    
+
+/*
+// for (let i = 0, pass = passwordInput.length; i < pass; i++) { //
+for(let value of passwordInput){
+    console.log(value); // passwordInput is not iterable, you can't iterate over the properties or entries of an object
+}
+
+const iterable = 'boo';
+
+for (const value of iterable) {
+  console.log(value);
+}
+// "b"
+// "o"
+// "o"
+
+
+
+
+
+
+// 
+// didn't work bc you can't have space in the string, STUPID
+
+
+ //for( i = 0; pass != ' ', [...validator].length >= 5; i++){  passwordCheckResult = "Good password"}
+
+// can you turn a string into an array before checking each ellemnt inside of the array as well as the whole array
+
+//validator[i] == number// to check if theres a num
+
+// for loops keep going untill the condition (ex i < 5 is false)
+
+// if the pass is good, do nothing, id it's not console.log('bad pass')
+// [...str].length;
+// if validator.length > 5 { }
+
+/* for (;  validator.length > 5;, second condition, third condition; i++; )
+
+// you can have like input field and one button
+// when the user is typing, you can check the field for text
+// first check is if there's any text
+// second check is if there is a capital letter
+// third if there's a number
+// fourth if the length is greater than 5, if so that's all good
+// if not, console.log(weak password)
+
+// TIP:
+// let string = "mab"; console.log(string[0]) -- to get each individual character
+// use a for loop to check for the requirements
+*/
+
+    </script>
+</body>
