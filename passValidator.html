@@ -1,33 +1,66 @@
 <!DOCTYPE html>
 <body>
 
-    <input type ="password" id= "passwordInput">
+    <input type ="text" id= "passwordInput">
     <button onclick="submitPassword()"> Submit </button>
 
     <p id= "passwordResult"> </p>
     
     <script>
-function submitPassword(){ // add a param to be able to connect with letterNumber?
-    let passwordInput = document.getElementById("passwordInput");
+function submitPassword(){ 
+    let passwordInput= document.getElementById("passwordInput").value;
     let passwordResult = document.getElementById("passwordResult");
-    let letterNumber =  /(?=^.{5}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+    passwordResult.innerText = '';
 
-    
-    // /^[0-9a-zA-Z]+$/; // make sure it's only letters and numbers
+    if(passwordInput.length < 5) {
+        console.log("invalid length");
+    } 
+    let weHaveANumber = false;
+    let weHaveACap = false;
 
+    for(let i = 0; i < passwordInput.length; i++){
+        let letter = passwordInput[i];
 
+        if (!isNaN(letter)){
+            console.log("it IS a number");
+            weHaveANumber = true;
+        } else {
+            if(letter == letter.toUpperCase()){
+            console.log("we hAVE a capital");
+            weHaveACap = true;
+        }   
+        }       
+} 
 
-    if (passwordInput.value == "" && passwordInput.value.length < 5 && !letterNumber )  // for?
-     { 
-        passwordResult.innerText = "bad pass";
-        
-    }  else {
-        passwordResult.innerText = "good";
-    }
+if(weHaveANumber == false){
+    passwordResult.innerText = "No number"
+} 
+
+if(weHaveACap == false){
+    passwordResult.innerText += " , No cap" // if we only use =, it will override the previous number
 }
+
+
+}
+    
+// var x, which a has property; var x that has a property 
     
 
 /*
+
+
+ 
+for(passwordInput.value = 0; passwordInput.value >= 5; passwordInput++){
+        if(passwordInput !== ""){
+            console.log('good')
+        } else{
+        console.log('vad')
+    } 
+    }
+
+
+
+
 // for (let i = 0, pass = passwordInput.length; i < pass; i++) { //
 for(let value of passwordInput){
     console.log(value); // passwordInput is not iterable, you can't iterate over the properties or entries of an object
@@ -43,21 +76,19 @@ for (const value of iterable) {
 // "o"
 
 
+function checkPass(){
+
+}
 
 
 
-
-// 
-// didn't work bc you can't have space in the string, STUPID
-
-
- //for( i = 0; pass != ' ', [...validator].length >= 5; i++){  passwordCheckResult = "Good password"}
+ //for( i = 0; pass != '', validator.length >= 5; i++){  passwordCheckResult = "Good password"}
 
 // can you turn a string into an array before checking each ellemnt inside of the array as well as the whole array
 
 //validator[i] == number// to check if theres a num
 
-// for loops keep going untill the condition (ex i < 5 is false)
+// for loops keep going untill the condition (ex i < 5) is false
 
 // if the pass is good, do nothing, id it's not console.log('bad pass')
 // [...str].length;
